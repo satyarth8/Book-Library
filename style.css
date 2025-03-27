@@ -1,0 +1,159 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+body{
+    background-image: url(./assets/images/libraryImage.webp);
+    background-blend-mode: overlay;
+    background-color: rgba(24, 24, 24, 0.972);
+
+}
+
+.topBar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:20px;
+    background-color: bisque;
+    width: 100vw;
+    height: min-content;
+    padding:20px 0px ;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    
+}
+
+.topBar h1{
+    
+    justify-self:start;
+}
+
+.topBar input{
+    border: 1px solid brown;
+    height: 50px;
+    border-radius: 15px;
+    font-size: medium;
+    width: 400px;
+    padding:10px;
+}
+.topBar select{
+    border: 1px solid brown;
+    height: 50px;
+    border-radius: 15px;
+}
+
+.topBar button{
+    border: 1px solid brown;
+    height: 50px;
+    border-radius: 15px;
+}
+
+.searchBar button{
+    border: 1px solid brown;
+    height: 50px;
+}
+
+.searchBar button{
+    font-size: larger;
+
+    border-radius: 10px;
+    height: 50px;
+    width: 40px;
+    background-color:burlywood;
+}
+
+.searchBar button:hover{
+    background-color: rgb(255, 165, 55);
+}
+
+
+#bookCards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 225px;
+    height:fit-content;
+    background-color: rgba(255, 219, 153, 0.779);
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out,box-shadow 0.3s ease-in-out;
+}
+
+/* .card .grid{
+    flex-direction: column;
+    width: 225px;
+} */
+
+.card .list{
+    flex-direction: row;
+} 
+
+.card:hover{
+    transform: scale(1.01);
+    box-shadow: 0px 5px 10px rgb(101, 101, 101);
+}
+
+.card img{
+    border-radius: 6px;
+    height: auto;
+}
+
+.cardText{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cardText p{
+    font-weight: 100;
+    font-size:13px;
+}
+
+.cardText h3{
+    padding: 3px;
+}
+
+.cardText a{
+    border: 2px solid rgba(0, 0, 0, 0.252);
+    margin-top: 10px;
+    padding:1px;
+    background-color: rgba(253, 255, 151, 0.516);
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+}
+
+.pageBar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+    background-color: bisque;
+    width: 100vw;
+    height: min-content;
+    padding:20px 0px ;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.pageBar button{
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    background-color:burlywood;
+}
+
+.pageBar button:hover{
+    background-color: rgb(255, 165, 55);
+}

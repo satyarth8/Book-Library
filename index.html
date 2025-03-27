@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Gallery</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <div class="topBar">
+                <h1>
+                    Book Library📖
+                </h1>
+                <div class="searchBar">
+                    <input id="searchInput" type="text" placeholder="🔍Search (Book Name/Author Name) here...">
+                    <button id="searchButton" type="submit">GO</button>
+                </div>
+                <button id="toggleButton" type="button">Toggle Grid/List View</button>
+                <select name="sort" id="select">
+                    <option value="" disabled selected>Sort by</option>
+                    <option value="atoz">a-z</option>
+                    <option value="ztoa">z-a</option>
+                    <option value="publishDate">Publish Date</option>
+                </select>
+        </div>
+    </header>
+
+    <div id="bookCards">
+            <!-- <div class="card">
+                <img src="http://books.google.com/books/content?id=bmDFjgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" alt="">
+                <div class="cardText">
+                    <h3 id="bookName">Developer Testing</h3>
+                    <p id="authorName">Author: Alexander Tarlinder </p>
+                    <p id="publisher">Publisher: Addison-Wesley Signature Series (Cohn)</p>
+                    <p id="releaseDate">Release Date: 2016</p>
+                    <a id="bookLink" href="http://books.google.co.in/books?id=bmDFjgEACAAJ&dq=developer&hl=&source=gbs_api">Book Link</a>
+                </div>
+            </div> -->
+    </div>
+
+    <footer>
+        <div class="pageBar">
+            <button id="prevPage" type="button"><</button>
+            <p id="pageNo">Page Number:1</p>
+            <button id="nextPage" type="button">></button>
+        </div>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
+
+<!-- //
+
+
+
