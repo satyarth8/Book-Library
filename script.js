@@ -42,13 +42,13 @@ function createGridCards(reqData) {
       tempCard.classList.remove('list');
   }
 
-  tempCard.innerHTML = `<img src="${reqData.imgUrl}" alt="">
+  tempCard.innerHTML = `<img src="${reqData.imgUrl}" alt="" >
                 <div class="cardText">
                     <h3 id="bookName">${reqData.name}</h3>
                     <p id="authorName"><b>Author:</b> ${reqData.authorName}</p>
                     <p id="publisher"><b>Publisher:</b> ${reqData.publisher}</p>
                     <p id="releaseDate"><b>Release Date:</b> ${reqData.releaseDate}</p>
-                    <a id="bookLink" href="${reqData.refLink}">Book Link</a>
+                    <a id="bookLink" href="${reqData.refLink}" target="_blank" rel="noopener noreferrer">Book Link</a>
                 </div>`;
   bookCard.appendChild(tempCard);
 }
