@@ -1,3 +1,5 @@
+<img src="https://github.com/user-attachments/assets/76a9f338-04bc-4f33-9c7f-f643ab5f1eae" width="60%">____________________<img src="https://github.com/user-attachments/assets/385c617f-9b78-414b-82b2-2d564c4e0195" height="400px">
+
 # Book Gallery
 
 Welcome to the Book Gallery! This project is a web application that allows users to browse and search for books. The application fetches book data from an external API and displays it in a user-friendly interface.
@@ -20,7 +22,7 @@ Welcome to the Book Gallery! This project is a web application that allows users
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/book-gallery.git
+   git clone https://github.com/satyarth8/book-gallery.git
    ```
 
 2. Navigate to the project directory:
@@ -40,12 +42,3 @@ Welcome to the Book Gallery! This project is a web application that allows users
 ## Contributing
 
 Contributions are welcome! If you find any bugs or have suggestions for new features, please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Thanks to the creators of the external API for providing the book data.
-- Special thanks to the open-source community for their contributions and support.
