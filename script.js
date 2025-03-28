@@ -34,7 +34,13 @@ async function fetchBookData(pageNo) {
 function createGridCards(reqData) {
   const bookCard = document.getElementById("bookCards");
   const tempCard = document.createElement("div");
-  tempCard.classList.add("card");
+
+  tempCard.classList.add('card');
+  if (toggleList) {
+      tempCard.classList.add('list');
+  } else {
+      tempCard.classList.remove('list');
+  }
 
   tempCard.innerHTML = `<img src="${reqData.imgUrl}" alt="">
                 <div class="cardText">
@@ -55,16 +61,17 @@ const nextPageBtn = document.getElementById("nextPage")
 const pageNo = document.getElementById("pageNo")
 const toggleListBtn = document.getElementById("toggleButton")
 let currentPage=1
-
+let toggleList = false
+let listText =''
 
 
 toggleListBtn.addEventListener('click' , ()=> {
     let cardDiv = document.getElementsByClassName("card")
+    toggleList=!toggleList
     // Convert HTMLCollection to an array and iterate
     Array.from(cardDiv).forEach(card => {
       card.classList.toggle("list");
     });
-
 })
 
 
