@@ -1,5 +1,25 @@
+// Variable Declaration
+const searchBtn = document.getElementById("searchButton")
+const searchInput = document.getElementById("searchInput")
+const select = document.getElementById("select")
+const prevPageBtn = document.getElementById("prevPage")
+const nextPageBtn = document.getElementById("nextPage")
+const pageNo = document.getElementById("pageNo")
+const toggleListBtn = document.getElementById("toggleButton")
+let currentPage=1      // By default the initial Page is 1
+let toggleList = false // By default the mode is of Card
+let listText =''  
+
+
+// Functions
+
+
+// Function:  fetchBookData
+// Input    :  page no. for which it has to fetch the data
+// Output  : An array of objects , which contain data to prepare the Cards , otherwise the an empty array
+// when Error  occurs : Since API can throw error in unfortunate events then instead of cards we display message "Api error" 
 async function fetchBookData(pageNo) {
-  let page= pageNo 
+  let page= pageNo // valid page is checked when calling this function
   const url =`https://api.freeapi.app/api/v1/public/books?page=${page}&limit=10&inc=kind%252Cid%252Cetag%252CvolumeInfo&query=tech`;
   const options = { method: "GET", headers: { accept: "application/json" } };
 
@@ -7,7 +27,6 @@ async function fetchBookData(pageNo) {
     const response = await fetch(url, options);
     const data = await response.json();
 
-    // console.log(data);
     // Create a Map of objects that I require
     const impData = data.data.data.map((item) => ({
       imgUrl: item.volumeInfo.imageLinks.thumbnail,
@@ -18,11 +37,10 @@ async function fetchBookData(pageNo) {
       publisher: item.volumeInfo.publisher || "Publisher Unknown",
     }));
 
-    // console.log(impData);
-
-    return impData
+    return impData // Array of the Card data
     
   } catch (error) {
+    //Show that api has some problem
     const bookCard = document.getElementById("bookCards");
     bookCard.innerText= "API didn't respond"
     bookCard.style.color ='white'
@@ -30,12 +48,17 @@ async function fetchBookData(pageNo) {
   }
 }
 
-
+// Function:  createGridCards
+// Input    :  the array of object that have necessary card data
+// Output  :  --
+// Use       :  Iterates over the input -> creates a card with proper class name and data from the object 
+//             :   |-> appends the cards in the bookCard div to display it
 function createGridCards(reqData) {
   const bookCard = document.getElementById("bookCards");
   const tempCard = document.createElement("div");
 
   tempCard.classList.add('card');
+  // we check if toggle list is set true or false and accordingly toggle presence of list in class list
   if (toggleList) {
       tempCard.classList.add('list');
   } else {
@@ -53,17 +76,36 @@ function createGridCards(reqData) {
   bookCard.appendChild(tempCard);
 }
 
-const searchBtn = document.getElementById("searchButton")
-const searchInput = document.getElementById("searchInput")
-const select = document.getElementById("select")
-const prevPageBtn = document.getElementById("prevPage")
-const nextPageBtn = document.getElementById("nextPage")
-const pageNo = document.getElementById("pageNo")
-const toggleListBtn = document.getElementById("toggleButton")
-let currentPage=1
-let toggleList = false
-let listText =''
+// Function:  showCards
+// Input    :  fetchData , searchQuery: default is empty 
+// Output  :  --
+// Use       : whenever the a search query is given this function runs and checks the presence of search query in the cards and display them
+//             :  also there is counter variable which checks the no. of cards match , if it stay 0 that is no card match and it is displayed
+function showCards(fetchData , searchQuery=''){
+  let counter=0
+  fetchData.forEach((element) => {
+    // console.log(element.name," type ",typeof element.name);
+    if(element.name.includes(searchQuery) || element.authorName.join(" ").includes(searchQuery)){
+      createGridCards(element);
+      counter+=1;
+    }
+  });
 
+  if(counter==0){
+    const bookCard = document.getElementById("bookCards");
+    bookCard.innerText= `No cards to show for your Search Query: ${searchQuery}`
+    bookCard.style.color ='white'
+  }
+}
+
+// Function:  showCards
+//  use       : updates page number
+function updatePageNo(){
+  pageNo.innerText=`Page Number: ${currentPage}`
+}
+
+
+// Event Listners
 
 toggleListBtn.addEventListener('click' , ()=> {
     let cardDiv = document.getElementsByClassName("card")
@@ -75,7 +117,7 @@ toggleListBtn.addEventListener('click' , ()=> {
 })
 
 
-// Check if enter button is pressed to 
+// Check if enter button is pressed in search area
 searchInput.addEventListener('keydown', (e)=>{
   if(e.key === 'Enter'){
     e.preventDefault() 
@@ -157,30 +199,9 @@ nextPageBtn.addEventListener('click',async ()=>{
 })
 
 
-function updatePageNo(){
-  pageNo.innerText=`Page Number: ${currentPage}`
-}
 
-function showCards(fetchData , searchQuery=''){
-  let counter=0
-  fetchData.forEach((element) => {
-    // console.log(element.name," type ",typeof element.name);
-    if(element.name.includes(searchQuery) || element.authorName.join(" ").includes(searchQuery)){
-      createGridCards(element);
-      counter+=1;
-    }
-  });
-
-  if(counter==0){
-    const bookCard = document.getElementById("bookCards");
-    bookCard.innerText= `No cards to show for your Search Query: ${searchQuery}`
-    bookCard.style.color ='white'
-  }
-}
-
-const fetchData = await fetchBookData(currentPage)
-console.log(fetchData);
-
+// The program execution starts here by intial page data showing
+const fetchData = await fetchBookData(currentPage);
 
 showCards(fetchData)
 
