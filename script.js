@@ -83,24 +83,23 @@ searchInput.addEventListener('keydown', (e)=>{
   }
 })
 
-searchBtn.addEventListener('click', ()=> {
+searchBtn.addEventListener('click', async ()=> {
   const searchQuery = searchInput.value.trim()
   if(searchQuery){
-
     const bookCard = document.getElementById("bookCards"); // Clear the cards so that i can show only mathching one
     bookCard.innerText=''
     console.log("Seached for ",searchQuery);
-    
-     showCards(fetchData,searchQuery)
+    const tempFetchData = await fetchBookData(currentPage)
+     showCards(tempFetchData,searchQuery)
     //fucntion call to search
   }
 })
 
 
-select.addEventListener('change' , (e)=> {
+select.addEventListener('change' , async (e)=> {
   const selectedValue = e.target.value
   console.log(selectedValue);
-  const tempFetchData = [...fetchData]
+  const tempFetchData = await fetchBookData(currentPage)
   if(selectedValue=== 'atoz'){
     tempFetchData.sort((a,b) => a.name.localeCompare(b.name))
   }else if(selectedValue === 'ztoa'){
@@ -153,6 +152,7 @@ nextPageBtn.addEventListener('click',async ()=>{
     bookCard.innerText=''
   //show cards of the next page
   showCards(pagefetchData)
+
   updatePageNo()
 })
 
