@@ -152,15 +152,24 @@ body{
 }
 
 .pageBar{
+    position: fixed;
+    left:50%;
+    bottom: 0;
+    transform: translateX(-50%); /* Center horizontally */
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap:20px;
+
     background-color: bisque;
-    width: 100vw;
+    width: max-content;
     height: min-content;
-    padding:20px 0px ;
+
+    padding:20px;
+    margin-bottom:10px;
+    border-radius: 12px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
