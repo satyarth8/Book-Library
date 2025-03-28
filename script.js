@@ -162,12 +162,20 @@ function updatePageNo(){
 }
 
 function showCards(fetchData , searchQuery=''){
-
+  let counter=0
   fetchData.forEach((element) => {
     // console.log(element.name," type ",typeof element.name);
-    if(element.name.includes(searchQuery) || element.authorName.join(" ").includes(searchQuery))
+    if(element.name.includes(searchQuery) || element.authorName.join(" ").includes(searchQuery)){
       createGridCards(element);
+      counter+=1;
+    }
   });
+
+  if(counter==0){
+    const bookCard = document.getElementById("bookCards");
+    bookCard.innerText= `No cards to show for your Search Query: ${searchQuery}`
+    bookCard.style.color ='white'
+  }
 }
 
 const fetchData = await fetchBookData(currentPage)
