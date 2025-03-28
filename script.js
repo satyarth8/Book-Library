@@ -53,8 +53,20 @@ const select = document.getElementById("select")
 const prevPageBtn = document.getElementById("prevPage")
 const nextPageBtn = document.getElementById("nextPage")
 const pageNo = document.getElementById("pageNo")
-
+const toggleListBtn = document.getElementById("toggleButton")
 let currentPage=1
+
+
+
+toggleListBtn.addEventListener('click' , ()=> {
+    let cardDiv = document.getElementsByClassName("card")
+    // Convert HTMLCollection to an array and iterate
+    Array.from(cardDiv).forEach(card => {
+      card.classList.toggle("list");
+    });
+
+})
+
 
 // Check if enter button is pressed to 
 searchInput.addEventListener('keydown', (e)=>{
